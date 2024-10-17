@@ -50,8 +50,10 @@ while opcao != 6:
         opcao_int = int(opcao)
         if int(opcao_int) == 1:
             for i in range(0, len(series)):
+                print("-----" * 30)
                 print(f"{i+1}ª SÉRIE:\nNome: {series[i]['nome']} \nAno: {series[i]['ano']} \nGênero: {series[i]['genero']} \nDescrição: {series[i]['descricao']}\n")
-            
+            print("-----" * 30)
+
         elif int(opcao_int) == 2:
             inicio = int(input("Início do trecho a ser impresso: "))
             fim = int(input("Fim do trecho a ser impresso: "))
@@ -59,7 +61,9 @@ while opcao != 6:
                 for i in range(inicio-1, fim):
                     print(f"{i+1}ª SÉRIE:\nNome: {series[i]['nome']} \nAno: {series[i]['ano']} \nGênero: {series[i]['genero']} \nDescrição: {series[i]['descricao']}\n")
             else:
-                    print("Intervalo inválido. Tente novamente")
+                    intervalo = "Intervalo inválido. Tente novamente"
+                    intervalo_maior = intervalo.upper()
+                    print(intervalo_maior)
 
         elif int(opcao_int) == 3:
             if len(series) <=50:
@@ -70,7 +74,9 @@ while opcao != 6:
                     series_add['descricao'] = str(input("Digite a descrição: "))
                     series.append(series_add.copy())
             else:
-                print("Limite de séries atingido. Impossível adicionar mais séries.")
+                Limite = "LIMITE DE SÉRIES ATINGIDO. IMPOSSÍVEL ADICIONAR MAIS SÉRIES."
+                limite_maior = Limite.upper()
+                print(limite_maior)
 
         elif int(opcao_int) == 4:
             encontrar_series_1 = False
@@ -78,35 +84,36 @@ while opcao != 6:
             for i in range(0, len(series)):
                 print(f"{i+1}ª SÉRIE:\nNome: {series[i]['nome']} \nAno: {series[i]['ano']} \nGênero: {series[i]['genero']} \nDescrição: {series[i]['descricao']}\n")
 
-            deletar = input("Digite o nome (chave) da série para deletar: ")
+            deletar = input("DIGITE O NOME (CHAVE) DA SÉRIE PARA DELETAR: ")
             i = 0
             while i < len(series) and not encontrar_series_1:
                 if (series[i]['nome']) == deletar:
                     encontrar_series_1 = True
                     del series[i]
-                    print("Apagando...")
+                    print("APAGANDO...")
                     time.sleep(1)
-                    print(f"Série {deletar} deletada com sucesso!")
+                    print(f"SÉRIE {deletar} DELETADA COM SUCESSO!")
                 else:
                     i += 1
             if not encontrar_series_1:
-                print("Série não encontrada. Tente novamente...")
+                tente = "SÉRIE NÃO ENCONTRADA. TENTE NOVAMENTE..."
 
         elif int(opcao_int) == 5:
             encontrar_series_2 = False
-            buscar = str(input("Digite o nome (chave) para realizar a busca: "))
+            buscar = str(input("DIGITE O NOME (CHAVE) PARA REALIZAR A BUSCA: "))
             for i in range(0, len(series)):
                 if (series[i]['nome']) == buscar:
                     encontrar_series_2 = True
                     print("Buscando...")
                     time.sleep(1)
                     print(f"Nome: {series[i]['nome']} \nAno: {series[i]['ano']} \nGênero: {series[i]['genero']} \nDescrição: {series[i]['descricao']}\n")
+                    print()
             if not encontrar_series_2:
-                print("Série não encontrada. Tente novamente...")
+                print("SÉRIE NÃO ENCONTRADA. TENTE NOVAMENTE...")
 
         elif int(opcao_int) == 6:
             print("Finalizando")
- 
+
     else:
-        print("Opção inválida. Tente novamente")       
-print('Fim do programa.')
+        print("OPÇÃO INVÁLIDA. TENTE NOVAMENTE")       
+print('FIM DO PROGRAMA.')
