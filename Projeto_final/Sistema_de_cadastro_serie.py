@@ -47,7 +47,7 @@ while opcao != 7:
 [7] sair do programa
 ''')
     opcao = input("Escolha uma opção do menu: ")
-    os.system("clear")
+    os.system("clear") # LIMPANDO O TERMINAL
 
     # menu de opções
     try:
@@ -56,11 +56,12 @@ while opcao != 7:
         # opção para  imprimir todas as séries
         if int(opcao_int) == 1:
             try:
-                for i in range(0, len(series)):
+                for i in range(0, len(series)): # PERCORRER A LISTA DE SÉRIES E PRINTA CADA DICIONÁRIO.
                     print("-----" * 30)
                     print(f"{i+1}ª SÉRIE:\nNome: {series[i]['nome']} \nAno: {series[i]['ano']} \nGênero: {series[i]['genero']} \nDescrição: {series[i]['descricao']}\n")
                 print("-----" * 30)
 
+                # OPÇÃO DE VOLTAR AO MENU OU FINALIZAR O PROGRAMA
                 menu = input("Deseja voltar para o menu? y= sim, n= finaliza programa [y | n]: ")
                 if menu.lower() == 'y':
                     os.system("clear")
@@ -69,8 +70,8 @@ while opcao != 7:
                 elif menu.lower() == 'n':
                     break
                 else:
-                    os.system("clear")
-                    print('{:-^70}'.format("\n| ERRO. VOLTANDO PARA O MENU... |\n"))
+                    os.system("clear") # LIMPANDO O TERMINAL
+                    print('{:-^100}'.format("\n| ERRO. VOLTANDO PARA O MENU... |\n"))
                     time.sleep(1)
                        
             except:
@@ -81,12 +82,13 @@ while opcao != 7:
             try:
                 inicio = int(input("Início do trecho a ser impresso: "))
                 fim = int(input("Fim do trecho a ser impresso: "))
-                if inicio >= 0  and fim <= len(series):
-                    for i in range(inicio-1, fim):
+                if inicio >= 0  and fim <= len(series): # VERIFICA SE O INTERVALO É VÁLIDO
+                    for i in range(inicio - 1, fim): # PERCORRE A LISTA DE SÉRIES COM OS ÍNDICES DE ENTRADA
                         print("-----" * 30)
                         print(f"{i+1}ª SÉRIE:\nNome: {series[i]['nome']} \nAno: {series[i]['ano']} \nGênero: {series[i]['genero']} \nDescrição: {series[i]['descricao']}")
                         print("-----" * 30)
-        
+
+                    # OPÇÃO DE VOLTAR AO MENU OU FINALIZAR O PROGRAMA
                     menu = input("Deseja voltar para o menu? y= sim, n= finaliza programa [y | n]: ")
                     if menu.lower() == 'y':
                         os.system("clear")
@@ -107,8 +109,10 @@ while opcao != 7:
         # opção para cadastrar uma nova série
         elif int(opcao_int) == 3:
             try:
-                if len(series) <=50:
-                    for i in range(1):
+                if len(series) <=50: # VERIFICA SE O LIMITE DE SÉRIES CADASTRADAS ULTRAPASSOU
+
+                    # ADICIONA UMA NOVA SÉRIE NA VARIÁVEL TEMPORARIA (series_add)
+                    for i in range(1): 
                         series_add['nome'] = str(input("Digite o nome da série: "))
                         series_add['ano'] = int(input("Digite o ano de lançamento: "))
                         series_add['genero'] = str(input("Digite o gênero: "))
@@ -117,6 +121,7 @@ while opcao != 7:
                     time.sleep(1)
                     print('{:-^98}'.format("\n| SÉRIE ADICIONADA COM SUCESSO |\n"))
                     
+                    # OPÇÃO DE VOLTAR AO MENU OU FINALIZAR O PROGRAMA
                     menu = input("Deseja voltar para o menu? y= sim, n= finaliza programa [y | n]: ")
                     if menu.lower() == 'y':
                         os.system("clear")
@@ -136,12 +141,12 @@ while opcao != 7:
             except:
                 print('{:-^102}'.format("\n| ERRO AO INSERIR A NOVA SÉRIE. |\n"))
 
-        # opção para deletar uma série cadastrada 
+        # opção para deletar uma série cadastrada sem usar break
         elif int(opcao_int) == 4:
             try:
-                encontrar_series_1 = False
+                encontrar_series_1 = False # VARIVAEL FLAG COMO FALSE
                 print("SÉRIES A SEREM DELETADAS:") 
-                for i in range(0, len(series)):
+                for i in range(0, len(series)): # PRINT AS SÉRIES DENTRO DA LISTA
                     print(f"{i+1}ª SÉRIE:\nNome: {series[i]['nome']} \nAno: {series[i]['ano']} \nGênero: {series[i]['genero']} \nDescrição: {series[i]['descricao']}\n")
 
                 deletar = input("DIGITE O NOME (CHAVE) DA SÉRIE PARA DELETAR: ")
@@ -151,14 +156,15 @@ while opcao != 7:
                         encontrar_series_1 = True
                         del series[i]
                         print("APAGANDO...")
-                        time.sleep(1)
+                        time.sleep(1) # DELAY DE 1 SEC.
                         print('{:-^98}'.format("\n| SÉRIE DELETADA COM SUCESSO! |\n"))
         
                     else:
                         i += 1
                 if not encontrar_series_1:
                         print('{:-^136}'.format("\n| SÉRIE NÃO ENCONTRADA. TENTE NOVAMENTE... |\n"))
-                        
+
+                # OPÇÃO DE VOLTAR AO MENU OU FINALIZAR O PROGRAMA     
                 menu = input("Deseja voltar para o menu? y= sim, n= finaliza programa [y | n]: ")
                 if menu.lower() == 'y':
                     os.system("clear")
@@ -174,7 +180,7 @@ while opcao != 7:
                 print('{:-^98}'.format("\n| ERRO AO DELETAR A SÉRIE. |\n"))
 
 
-        # opção para buscar uma série cadastrada
+        # opção para buscar uma série cadastrada sem usar o break
         elif int(opcao_int) == 5:
             try:
                 encontrar_series_2 = False
@@ -191,8 +197,9 @@ while opcao != 7:
         
                 if not encontrar_series_2:
                     os.system("clear")
-                    print('{:-^136}'.format("\n| SÉRIE NÃO ENCONTRADA. TENTE NOVAMENTE... |\n"))    
-                
+                    print('{:-^136}'.format("\n| SÉRIE NÃO ENCONTRADA. TENTE NOVAMENTE... |\n")) 
+
+                # OPÇÃO DE VOLTAR AO MENU OU FINALIZAR O PROGRAMA
                 menu = input("Deseja voltar para o menu? y= sim, n= finaliza programa [y | n]: ")
                 if menu.lower() == 'y':
                     os.system("clear")
@@ -207,7 +214,7 @@ while opcao != 7:
             except:
                 print('{:-^70}'.format("\n| ERRO AO BUSCAR A SÉRIE. |\n")) 
 
-        # opção para editar uma série
+        # opção para editar uma série sem usar break
         elif int(opcao_int) == 6:
             try:
                 encontrar_series_3 = False
@@ -225,6 +232,7 @@ Opções:
     [3] Mudar gênero
     [4] Mudar descrição
 ''')
+                        # MENU DE EDIÇÃO DA SÉRIE
                         alterar = input("O que deseja alterar? ")
                         if alterar == '1':
                             series[i]['nome'] = str(input("Digite o novo nome: "))
@@ -240,7 +248,8 @@ Opções:
                 if not encontrar_series_3:
                     os.system("clear")
                     print('{:-^136}'.format("\n| SÉRIE NÃO ENCONTRADA. TENTE NOVAMENTE... |\n"))
-                        
+
+                # OPÇÃO DE VOLTAR AO MENU OU FINALIZAR O PROGRAMA       
                 menu = input("Deseja voltar para o menu? y= sim, n= finaliza programa [y | n]: ")
                 if menu.lower() == 'y':
                     os.system("clear")
